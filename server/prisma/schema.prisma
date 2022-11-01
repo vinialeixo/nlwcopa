@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd{
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model Pool{
+  id String @id @default(cuid()) //cuid id aleatorio
+  title String
+  code String @unique //unico codigo do bolao
+  createdAt DateTime @default(now())
+}
