@@ -9,7 +9,6 @@ import {
 
 import { Loading } from "./src/components/Loading";
 import { Signin } from "./src/screens/Signin";
-
 export default function App() {
   const [fonstLoaded] = useFonts({
     Roboto_400Regular,

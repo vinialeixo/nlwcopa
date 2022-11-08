@@ -1,4 +1,5 @@
 import { Button as ButtonNativeBase, Text, IButtonProps } from "native-base";
+import { color } from "native-base/lib/typescript/theme/styled-system";
 
 interface Props extends IButtonProps {
   title: string;
@@ -13,10 +14,22 @@ export function Button({ title, type = "PRIMARY", ...rest }: Props) {
       rounded="sm"
       fontSize="md"
       textTransform="uppercase"
-      bg={}
+      bg={type === "SECONDARY" ? "red.500" : "yellow.500"}
+      _pressed={{
+        bg: type === "SECONDARY" ? "red.600" : "yellow.600",
+      }}
+      _loading={{
+        _spinner: { color: "black" },
+      }}
       {...rest}
     >
-      <Text>{title}</Text>
+      <Text
+        fontSize="sm"
+        fontFamily="heading"
+        color={type === "SECONDARY" ? "white" : "blac"}
+      >
+        {title}
+      </Text>
     </ButtonNativeBase>
   );
 }
