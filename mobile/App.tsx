@@ -9,6 +9,8 @@ import {
 
 import { Loading } from "./src/components/Loading";
 import { Signin } from "./src/screens/Signin";
+import { AuthContextProvider } from "./src/contexts/AuthContent";
+
 export default function App() {
   const [fonstLoaded] = useFonts({
     Roboto_400Regular,
@@ -18,12 +20,14 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
-      {fonstLoaded ? <Signin /> : <Loading />}
+      <AuthContextProvider>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        {fonstLoaded ? <Signin /> : <Loading />}
+      </AuthContextProvider>
     </NativeBaseProvider>
   );
 }
